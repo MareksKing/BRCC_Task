@@ -21,7 +21,7 @@ def on_button_click():
     # Run the other Python file
     result = subprocess.Popen(["venv\\Scripts\\python", "BRCC_Task.py"], stderr=subprocess.PIPE)
 
-    if result.returncode != 0:
+    if len(result.stderr.readlines()) > 0:
         print(result.stderr.readlines()[-1].decode("utf-8"))
 
 # Initialize the main window
@@ -59,11 +59,11 @@ time_frame_end_entry.grid(row=1, column=3, padx=5, pady=5, sticky="w")
 time_zone_label = ctk.CTkLabel(root, text="Time Zone:")
 time_zone_label.grid(row=3, column=0, padx=5, pady=5, sticky="e")
 time_zone_combobox = ctk.CTkOptionMenu(root, values=["CET", "EEST", "UTC"])
-time_zone_combobox.grid(row=3, column=0, padx=5, pady=5, sticky="e")
+time_zone_combobox.grid(row=3, column=1, padx=5, pady=5, sticky="w")
 
 # Button to start the plotting script
 start_button = ctk.CTkButton(root, text="Start Plotting", command=on_button_click)
-start_button.grid(row=4, column=0, padx=5, pady=5, sticky="e")
+start_button.grid(row=4, column=1, padx=5, pady=5, sticky="w")
 
 # Run the main loop
 root.mainloop()

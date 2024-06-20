@@ -19,7 +19,7 @@ if datetime.date.fromisoformat(START_DATE) > datetime.date.fromisoformat(END_DAT
 if datetime.date.fromisoformat(START_DATE) == datetime.date.fromisoformat(END_DATE) and TIME_FRAME_START == TIME_FRAME_END:
     raise ValueError("Date and time cannot be the same")
 
-TIME_ZONE = time_zone # Can also be EEST or UTC
+TIME_ZONE = time_zone
 
 IMBALANCE_REQUEST = f"https://api-baltic.transparency-dashboard.eu/api/v1/export?id=imbalance_volumes&start_date={START_DATE}T{TIME_FRAME_START}%3A00&end_date={END_DATE}T{TIME_FRAME_END}%3A00&output_time_zone={TIME_ZONE}&output_format=json&json_header_groups=0"
 NORMAL_ACTIVATIONS_REQUEST = f"https://api-baltic.transparency-dashboard.eu/api/v1/export?id=normal_activations_total&start_date={START_DATE}T{TIME_FRAME_START}%3A00&end_date={END_DATE}T{TIME_FRAME_END}%3A00&output_time_zone={TIME_ZONE}&output_format=json&json_header_groups=0"
